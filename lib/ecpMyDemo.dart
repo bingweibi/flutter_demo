@@ -81,7 +81,7 @@ class _EcpMyDemoState extends State<EcpMyDemo> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: ecpDemoBeanList.sublist(1,ecpDemoBeanList.length-1)
+              children: ecpDemoBeanList
                   .asMap()
                   .map((i, v) => MapEntry(
                   i,
