@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'badgeDemo.dart';
 import 'chartDemo.dart';
 import 'ecpMyDemo.dart';
+import 'dropDownDemo.dart';
 import 'nestedScrollDemo.dart';
 import 'nestedScrollDemoPage.dart';
 import 'tabDemo.dart';
@@ -33,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  List<String> title = ["chartDemo","badgeDemo","nestedScrollDemo","NestedScrollDemoPage","tabDemo","ecpMyDemo"];
+  List<String> title = ["chartDemo","badgeDemo","nestedScrollDemo","NestedScrollDemoPage","tabDemo","ecpMyDemo",'dropDownButtonDemo'];
   @override
   Widget build(BuildContext context) {
     Widget divider = Divider(
@@ -46,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             child: ListTile(
-              title: Text(index<=5 ? title[index]: "$index"),
+              title: Text(index <= 6 ? title[index]: "$index"),
             ),
             onTap: () {
               if(index == 0){
@@ -72,6 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
               }else if(index == 5){
                 Navigator.push(context, MaterialPageRoute(builder:(context){
                   return EcpMyDemo();
+                }));
+              }else if(index == 6){
+                Navigator.push(context, MaterialPageRoute(builder:(context){
+                  return DropDownButtonDemo();
                 }));
               }
             },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:fl_chart/fl_chart.dart';
 
+
 class ChartDemo extends StatefulWidget {
   @override
   _ChartDemoState createState() => _ChartDemoState();
@@ -56,7 +57,7 @@ class _ChartDemoState extends State<ChartDemo> {
                                 child: new DropdownButtonHideUnderline(
                                   child: new DropdownButton(
                                     elevation: 2,
-                                    isDense: false,//下拉按钮与展示之间的距离
+                                    isDense: false, //下拉按钮与展示之间的距离
                                     //设置这个value之后,选中对应位置的item，
                                     //再次呼出下拉菜单，会自动定位item位置在当前按钮显示的位置处
                                     value: selectItemValue,
@@ -84,6 +85,7 @@ class _ChartDemoState extends State<ChartDemo> {
                             ],
                           ),
                         ),
+                        ///饼状图
                         SizedBox(
                             height: 235,
                             child: charts.PieChart(seriesList1,
@@ -92,11 +94,12 @@ class _ChartDemoState extends State<ChartDemo> {
                                       selectedDataConfig: [
                                         new charts.SeriesDatumConfig<String>(
                                             'month', '3')
-                                      ])
+                                      ]),
+//                                  charts.InitialHintBehavior(maxHintTranslate: 4.0),
+//                                  charts.PanAndZoomBehavior(),
                                 ],
                                 animate: true,
                                 animationDuration: Duration(milliseconds: 800),
-                                defaultInteractions: true,
                                 defaultRenderer: new charts.ArcRendererConfig(
                                     arcWidth: 50, arcRatio: 0.57))),
                         Container(
@@ -243,6 +246,7 @@ class _ChartDemoState extends State<ChartDemo> {
                             )
                           ],
                         ),
+                        ///柱状图
                         SizedBox(
                             height: 160,
                             child: charts.BarChart(
@@ -415,6 +419,7 @@ class _ChartDemoState extends State<ChartDemo> {
                             ),
                           ),
                         ),
+                        ///折线图
                         SizedBox(
                           height: 155,
                           child: charts.LineChart(
@@ -542,8 +547,6 @@ List<charts.Series<GroupBarChart, String>> _createSampleData2() {
     new GroupBarChart('2月', 25),
     new GroupBarChart('3月', 100),
     new GroupBarChart('4月', 75),
-    new GroupBarChart('5月', 100),
-    new GroupBarChart('6月', 75),
   ];
 
   final tableSalesData = [
@@ -551,8 +554,19 @@ List<charts.Series<GroupBarChart, String>> _createSampleData2() {
     new GroupBarChart('2月', 50),
     new GroupBarChart('3月', 10),
     new GroupBarChart('4月', 20),
-    new GroupBarChart('5月', 100),
-    new GroupBarChart('6月', 75),
+  ];
+
+  final tableSalesData2 = [
+    new GroupBarChart('1月', 25),
+    new GroupBarChart('2月', 50),
+    new GroupBarChart('3月', 10),
+    new GroupBarChart('4月', 20),
+  ];
+  final tableSalesData3 = [
+    new GroupBarChart('1月', 25),
+    new GroupBarChart('2月', 50),
+    new GroupBarChart('3月', 10),
+    new GroupBarChart('4月', 20),
   ];
 
   return [
@@ -561,13 +575,43 @@ List<charts.Series<GroupBarChart, String>> _createSampleData2() {
       domainFn: (GroupBarChart sales, _) => sales.month,
       measureFn: (GroupBarChart sales, _) => sales.sales,
       data: desktopSalesData,
+      labelAccessorFn: (GroupBarChart sales,_) => '${sales.sales.toString()}'
     ),
     new charts.Series<GroupBarChart, String>(
       id: 'Tablet',
       domainFn: (GroupBarChart sales, _) => sales.month,
       measureFn: (GroupBarChart sales, _) => sales.sales,
       data: tableSalesData,
+        labelAccessorFn: (GroupBarChart sales,_) => '${sales.sales.toString()}',
     ),
+//    new charts.Series<GroupBarChart, String>(
+//      id: 'Tablet2',
+//      domainFn: (GroupBarChart sales, _) => sales.month,
+//      measureFn: (GroupBarChart sales, _) => sales.sales,
+//      data: tableSalesData2,
+//      labelAccessorFn: (GroupBarChart sales,_) => '${sales.sales.toString()}',
+//    ),
+//    new charts.Series<GroupBarChart, String>(
+//      id: 'Tablet3',
+//      domainFn: (GroupBarChart sales, _) => sales.month,
+//      measureFn: (GroupBarChart sales, _) => sales.sales,
+//      data: tableSalesData3,
+//      labelAccessorFn: (GroupBarChart sales,_) => '${sales.sales.toString()}',
+//    ),
+//    new charts.Series<GroupBarChart, String>(
+//      id: 'Tablet4',
+//      domainFn: (GroupBarChart sales, _) => sales.month,
+//      measureFn: (GroupBarChart sales, _) => sales.sales,
+//      data: tableSalesData3,
+//      labelAccessorFn: (GroupBarChart sales,_) => '${sales.sales.toString()}',
+//    ),
+//    new charts.Series<GroupBarChart, String>(
+//      id: 'Tablet5',
+//      domainFn: (GroupBarChart sales, _) => sales.month,
+//      measureFn: (GroupBarChart sales, _) => sales.sales,
+//      data: tableSalesData3,
+//      labelAccessorFn: (GroupBarChart sales,_) => '${sales.sales.toString()}',
+//    ),
   ];
 }
 

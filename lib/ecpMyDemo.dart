@@ -13,6 +13,7 @@ class _EcpMyDemoState extends State<EcpMyDemo> {
   PageController _controller;
   int _currentIndex = 1;
   List<EcpDemoBean> ecpDemoBeanList;
+  List<int> ecpDemoBeanList2;
 
   @override
   void initState() {
@@ -25,6 +26,9 @@ class _EcpMyDemoState extends State<EcpMyDemo> {
       EcpDemoBean("周芷若的2020-12-19请假审批","2020-02-19 02:29:35", "张无忌3", "23时35分"),
       EcpDemoBean("周芷若的2020-12-19请假审批","2020-02-19 02:29:35", "张无忌4", "23时35分"),
       EcpDemoBean("周芷若的2020-12-19请假审批","2020-02-19 02:29:35", "张无忌1", "23时35分"),
+    ];
+    ecpDemoBeanList2 = [
+      1,2,3,4
     ];
     _controller = PageController(initialPage: 1);
   }
@@ -81,7 +85,7 @@ class _EcpMyDemoState extends State<EcpMyDemo> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: ecpDemoBeanList
+              children: ecpDemoBeanList2
                   .asMap()
                   .map((i, v) => MapEntry(
                   i,
