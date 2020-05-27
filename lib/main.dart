@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chart_demo/reorderlistviewdemo.dart';
+import 'package:flutter_chart_demo/reorderwrapdemo.dart';
+import 'package:flutter_chart_demo/shapeDemo.dart';
 
 import 'badgeDemo.dart';
 import 'chartDemo.dart';
@@ -34,7 +37,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  List<String> title = ["chartDemo","badgeDemo","nestedScrollDemo","NestedScrollDemoPage","tabDemo","ecpMyDemo",'dropDownButtonDemo'];
+  List<String> title = ["chartDemo","badgeDemo","nestedScrollDemo",
+    "NestedScrollDemoPage","tabDemo","ecpMyDemo",'dropDownButtonDemo',"shapeDemo","reorderListViewDemo","ReOrderWrapDemo"
+  ];
   @override
   Widget build(BuildContext context) {
     Widget divider = Divider(
@@ -47,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             child: ListTile(
-              title: Text(index <= 6 ? title[index]: "$index"),
+              title: Text(index <= 9 ? title[index]: "$index"),
             ),
             onTap: () {
               if(index == 0){
@@ -68,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               }else if(index == 4){
                 Navigator.push(context, MaterialPageRoute(builder:(context){
-                  return TabDemo();
+                  return TabbedAppBarSample();
                 }));
               }else if(index == 5){
                 Navigator.push(context, MaterialPageRoute(builder:(context){
@@ -77,6 +82,18 @@ class _MyHomePageState extends State<MyHomePage> {
               }else if(index == 6){
                 Navigator.push(context, MaterialPageRoute(builder:(context){
                   return DropDownButtonDemo();
+                }));
+              }else if(index == 7){
+                Navigator.push(context, MaterialPageRoute(builder:(context){
+                  return ShapeDemo();
+                }));
+              }else if(index == 8){
+                Navigator.push(context, MaterialPageRoute(builder:(context){
+                  return ReOrderListViewDemo();
+                }));
+              }else if(index == 9){
+                Navigator.push(context, MaterialPageRoute(builder:(context){
+                  return WrapExample();
                 }));
               }
             },

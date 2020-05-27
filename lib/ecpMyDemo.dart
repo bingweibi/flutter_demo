@@ -127,7 +127,7 @@ class _EcpMyDemoState extends State<EcpMyDemo> {
                   ),
                 ),
                 Text(
-                  ecpDemoBean.time,
+                  "123",
                   style: TextStyle(fontSize: 14,color: Colors.black,decoration: TextDecoration.none),
                 )
               ],
